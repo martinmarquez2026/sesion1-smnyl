@@ -222,7 +222,8 @@
 <!-- ═══════════════════════════════════════ -->
 <section class="seccion activa" id="s1">
   <p class="eyebrow">Sesión 1 · Bienvenida</p>
-  <h2>Bienvenido — gracias por tu tiempo</h2>
+  <h2 id="saludo-nombre">Bienvenido — gracias por tu tiempo</h2>
+  <div style="margin:.65rem 0 .25rem"><label class="campo-label">Nombre del cliente</label><input class="campo-linea" id="cliente-nombre" type="text" placeholder="Escribe el nombre…" oninput="var n=this.value.trim();document.getElementById('saludo-nombre').textContent=n?'Bienvenido, '+n+' — gracias por tu tiempo':'Bienvenido — gracias por tu tiempo'"></div>
 
   <div class="quote" style="margin-bottom: 1.25rem;">
     Esta conversación dura aproximadamente 40 minutos. No hay compromisos ni presiones — solo información útil para ti y tu familia.
@@ -587,28 +588,28 @@
 
   <div class="prod-grid">
     <div class="prod-card" onclick="abrirPresent('vida')">
-      <div class="prod-icon">🛡️</div>
-      <h3>Vida con Ahorro</h3>
-      <p>Protección + ahorro forzoso + beneficio fiscal Art. 151 LISR</p>
-      <span class="prod-badge" style="background:#e8f0fb; color:#1a4f8a;">ORVI / Dashboard</span>
+      <div class="prod-icon">💙</div>
+      <h3>VIDA / AHORRO</h3>
+      <p>Vida Mujer · Seguro dotal con ahorro en UDIs · Art. 151 LISR</p>
+      <span class="prod-badge" style="background:var(--azul-claro);color:var(--azul)">Vida Mujer</span>
     </div>
     <div class="prod-card" onclick="abrirPresent('retiro')">
-      <div class="prod-icon">🏖️</div>
-      <h3>Retiro (PPR)</h3>
-      <p>Plan Personal de Retiro · deducible hasta 5 UMAs anuales · Art. 151</p>
-      <span class="prod-badge" style="background:#e1f5ee; color:#1d9e75;">PPR · Simulador</span>
-    </div>
-    <div class="prod-card" onclick="abrirPresent('ahorro')">
-      <div class="prod-icon">💰</div>
-      <h3>Ahorro / IMAGINA</h3>
-      <p>Ahorro programado en UDIs con valor garantizado a largo plazo</p>
-      <span class="prod-badge" style="background:#faeeda; color:#854f0b;">IMAGINA · UDIS</span>
+      <div class="prod-icon">🧩</div>
+      <h3>RETIRO / PPR</h3>
+      <p>Plan Personal de Retiro en UDIs · Art. 151 LISR</p>
+      <span class="prod-badge" style="background:var(--azul-claro);color:var(--azul)">PPR · Próximamente</span>
     </div>
     <div class="prod-card" onclick="abrirPresent('gmm')">
-      <div class="prod-icon">🏥</div>
-      <h3>GMM · Alfa Medical</h3>
-      <p>Gastos Médicos Mayores · cobertura, redes, deducibles y costos</p>
-      <span class="prod-badge" style="background:#fcebeb; color:#a32d2d;">GMM · Íntegro</span>
+      <div class="prod-icon">🛡️</div>
+      <h3>GMM</h3>
+      <p>Gastos Médicos Mayores · Alfa Medical Íntegro</p>
+      <span class="prod-badge" style="background:var(--verde-claro);color:var(--verde)">Alfa Medical</span>
+    </div>
+    <div class="prod-card" onclick="abrirPresent('segubeca')">
+      <div class="prod-icon">🎓</div>
+      <h3>SEGUBECA</h3>
+      <p>Plan universitario garantizado en UDIs</p>
+      <span class="prod-badge" style="background:var(--azul-claro);color:var(--azul)">SeguBeca</span>
     </div>
   </div>
 
@@ -639,12 +640,12 @@
 const TOTAL_SEC = 9;
 let secActual = 1;
 const productos = {
-  vida:   { titulo: 'Vida con Ahorro · ORVI', desc: 'Dashboard interactivo de protección y ahorro.' },
-  retiro: { titulo: 'Retiro · PPR Simulator', desc: 'Proyección del Plan Personal de Retiro en UDIs.' },
-  ahorro: { titulo: 'Ahorro · IMAGINA', desc: 'Simulador de ahorro programado con UDIs.' },
-  gmm:    { titulo: 'GMM · Alfa Medical Íntegro', desc: 'Presentación interactiva de Gastos Médicos Mayores.' },
+  vida:     { titulo: 'VIDA / AHORRO', desc: 'Vida Mujer · Ahorro dotal en UDIs · Art. 151 LISR.' },
+  retiro:   { titulo: 'RETIRO / PPR', desc: 'Plan Personal de Retiro en UDIs · Art. 151 LISR.' },
+  gmm:      { titulo: 'GMM', desc: 'Gastos Médicos Mayores · Alfa Medical Íntegro.' },
+  segubeca: { titulo: 'SEGUBECA', desc: 'Plan universitario garantizado en UDIs.' },
 };
-let urlsGuardadas = { vida: '', retiro: '', ahorro: '', gmm: '' };
+let urlsGuardadas = { vida: 'https://martinmarquez2026.github.io/vida-mujer-smnyl/vida_mujer_v5.html', retiro: '', gmm: 'https://martinmarquez2026.github.io/gmm-smnyl/historia_gmm.html', segubeca: 'https://martinmarquez2026.github.io/segubeca-smnyl/' };
 let presentActual = '';
 let orden = [];
 
@@ -724,8 +725,8 @@ function renderPilares() {
 }
 
 // ── AGENDA / CALENDARIO ──
-const HORAS = ['16:00','17:00','18:00','19:00'];
-const HORAS_LABEL = ['4:00 PM','5:00 PM','6:00 PM','7:00 PM'];
+const HORAS = ['09:00','10:00','11:00','16:00','17:00','18:00','19:00'];
+const HORAS_LABEL = ['9 AM','10 AM','11 AM','4 PM','5 PM','6 PM','7 PM'];
 const DIAS_SEMANA = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
 const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 
@@ -775,7 +776,7 @@ function renderAgenda() {
 
   // Encabezados días (lun-vie)
   let thead = '<tr><th style="padding:6px 4px; color:var(--texto-suave); font-weight:500; font-size:0.8rem; text-align:left; width:60px;">Hora</th>';
-  for (let d = 0; d < 5; d++) {
+  for (let d = 0; d < 6; d++) {
     const dia = new Date(lunes); dia.setDate(lunes.getDate() + d);
     const hoy = esHoy(dia);
     thead += `<th style="padding:6px 4px; text-align:center; font-weight:${hoy?'700':'500'}; color:${hoy?'var(--azul)':'var(--texto-suave)'}; font-size:0.82rem;">
@@ -790,7 +791,9 @@ function renderAgenda() {
   HORAS.forEach((hora, hi) => {
     tbody += `<tr>`;
     tbody += `<td style="padding:6px 4px; font-size:0.82rem; color:var(--texto-suave); white-space:nowrap;">${HORAS_LABEL[hi]}</td>`;
-    for (let d = 0; d < 5; d++) {
+    for (let d = 0; d < 6; d++) {
+      if (d === 5 && hi >= 3) { tbody += '<td></td>'; continue; }
+      if (d < 5 && hi < 3) { tbody += '<td></td>'; continue; }
       const dia = new Date(lunes); dia.setDate(lunes.getDate() + d);
       const fStr = fechaStr(dia);
       const pasado = esPasado(dia);
